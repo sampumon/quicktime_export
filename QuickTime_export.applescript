@@ -5,13 +5,9 @@ tell application "Finder"
 end tell
 
 repeat with finderItem in finderSelection
-	set file_name to name of finderItem
-	log file_name
-	set outfileNoPermission to POSIX path of (finderItem as text) & "_quicktime.mp4"
-	
-	--YOU DON'T HAVE PERMISSION ANYWHERE EXCEPT
-	--/Users/$USER/Library/Containers/com.apple.QuickTimePlayerX/Data
-	quicktimeExport(finderItem, file_name as POSIX file) of me
+	set outfile to POSIX path of (finderItem as text) & "_quicktime.mp4"
+	log outfile
+	quicktimeExport(finderItem, outfile as POSIX file) of me
 end repeat
 
 -- WARNING WE OVERWRITE
